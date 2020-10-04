@@ -107,5 +107,5 @@ fabric.properties
 # Local History for Visual Studio Code
 .history/
 
-!/bboard.data
 /bboard.data
+/geckodriver.log
