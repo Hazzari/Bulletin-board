@@ -1,0 +1,61 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Главная{% endblock %} - Доска объявлений</title>
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'main/style.css' %}" type="text/css">
+    {% bootstrap_javascript jquery='slim' %}
+</head>
+<body content="container">
+    <header class="mb-4">
+        <h1 class="display-1 text-center">Объявления</h1>
+    </header>
+    <div class="row mx-0">
+        <ul class="col nav justify-content-end border">
+            <li class="nav-item">
+                <a href="#" class="nav-link">Регистрация</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">Профиль</a>
+
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Мои объявления</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Изменить данные</a>
+                    <a href="#" class="dropdown-item">Изменить пароль</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Удалить</a>
+                </div>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Вход</a></li>
+        </ul>
+    </div>
+    <div class="row mx-0">
+        <nav class="col-md-auto nav flex-column border">
+            <a href="{% url 'main:index' %}" class="nav-link root">Главная</a>
+            <span class="nav-link root font-weight-bold">Недвижимость</span>
+            <a href="#" class="nav-link">Жилье</a>
+            <a href="#" class="nav-link">Гаражи</a>
+            <a href="#" class="nav-link">Склады</a>
+            <span class="nav-link root font-weight-bold">Транспорт</span>
+            <a href="#" class="nav-link">Легковой</a>
+            <a href="#" class="nav-link">Грузовой</a>
+        </nav>
+        <section class="col border py-2">
+            {% bootstrap_messages %}
+            {% block content %}
+            {% endblock %}
+        </section>
+    </div>
+    <footer class="mt-3 mr-2">
+        <p class="text-right font-italic">&copy; читатели.</p>
+    </footer>
+</body>
+</html>
+
+
