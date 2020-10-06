@@ -16,18 +16,13 @@
 </header>
 <div class="row mx-0">
     <ul class="col nav justify-content-end border">
-        <li class="nav-item">
-            <a href="#" class="nav-link">Регистрация</a></li>
+        <li class="nav-item"></li>
         {% if user.is_authenticated %}
-
-
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">Профиль</a>
-
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Мои объявления</a>
+                    <a href="{% url 'main:profile' %}" class="dropdown-item">Мои объявления</a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">Изменить данные</a>
                     <a href="#" class="dropdown-item">Изменить пароль</a>
@@ -36,8 +31,10 @@
                 </div>
             </li>
         {% else %}
-            <li class="nav-item"><a href="#" class="nav-link">Вход</a></li>
+            <a href="#" class="nav-link">Регистрация</a>
+            <li class="nav-item"><a href="{% url 'main:login' %}" class="nav-link">Вход</a></li>
         {% endif %}
+
 
     </ul>
 </div>
