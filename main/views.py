@@ -1,4 +1,4 @@
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.template import TemplateDoesNotExist
@@ -20,6 +20,10 @@ def other_page(request, page):
 
 class BBLoginView(LoginView):
     template_name = 'main/login.html'
+
+
+class BBlogoutView(LogoutView):
+    template_name = 'main/logout.html'
 
 
 @login_required

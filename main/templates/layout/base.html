@@ -4,7 +4,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1,
+                                  maximum-scale=1, minimum-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Главная{% endblock %} - Доска объявлений</title>
     {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'main/style.css' %}" type="text/css">
@@ -14,7 +16,7 @@
 <header class="mb-4">
     <h1 class="display-1 text-center">Объявления</h1>
 </header>
-<div class="row mx-0">
+<div class="row">
     <ul class="col nav justify-content-end border">
         <li class="nav-item"></li>
         {% if user.is_authenticated %}
@@ -27,6 +29,8 @@
                     <a href="#" class="dropdown-item">Изменить данные</a>
                     <a href="#" class="dropdown-item">Изменить пароль</a>
                     <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Выйти</a>
+                    <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">Удалить</a>
                 </div>
             </li>
@@ -34,8 +38,6 @@
             <a href="#" class="nav-link">Регистрация</a>
             <li class="nav-item"><a href="{% url 'main:login' %}" class="nav-link">Вход</a></li>
         {% endif %}
-
-
     </ul>
 </div>
 <div class="row mx-0">
