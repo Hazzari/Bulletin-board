@@ -11,7 +11,7 @@
     {% else %}
         <form method="post">
             {% csrf_token %}
-            {% bootstrap_form from layout='horizontal' %}
+            {% bootstrap_form form layout='horizontal' %}
             <input type="hidden" name="next" value="{{ next }}">
             {% buttons submit='Войти' %}
             {% endbuttons %}
