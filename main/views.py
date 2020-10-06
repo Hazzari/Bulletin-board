@@ -10,7 +10,7 @@ def index(request):
 
 def other_page(request, page):
     try:
-        template = get_template('main/' + page + '.html')
+        template = get_template(f'main/{page}.html')
     except TemplateDoesNotExist:
         raise Http404
     return HttpResponse(template.render(request=request))
