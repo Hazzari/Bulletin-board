@@ -109,3 +109,4 @@ fabric.properties
 
 /bboard.data
 /geckodriver.log
+__pycache__
