@@ -10,7 +10,6 @@ DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 DATABASES = {'default': env.db()}
 
-
 # Email
 if DEBUG:
     EMAIL_PORT = 1025
@@ -21,8 +20,6 @@ else:
     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
     EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-
-
 
 if DEBUG:
     # Псевдо кэш для отладки
@@ -78,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.middlewares.bboard_context_processor',
             ],
         },
     },
