@@ -46,6 +46,8 @@ INSTALLED_APPS = [
 
     # Third party apps
     'bootstrap4',
+    'django_cleanup',
+    'easy_thumbnails',
 
     # Created apps
     'main.apps.MainConfig',
@@ -105,7 +107,19 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.parent / 'static'
 MEDIA_ROOT = BASE_DIR.parent / 'media'
 MEDIA_URL = '/media/'
+
+THUMBNAIL_ALIASES = {
+                        '': {
+                            'default': {
+                                'size': (96, 96),
+                                'crop': 'scale',
+                            },
+                        },
+                    },
+
+THUMBNAIL_BASEDIR = 'thumbnails'
