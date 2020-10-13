@@ -44,7 +44,7 @@ class RegisterUserForm(forms.ModelForm):
         user.is_activated = False
         if commit:
             user.save()
-        user_registered.send(RegisterUserForm, instance=user)  # Отправляем писмо пользователю с требованием регистрации
+        user_registered.send(RegisterUserForm, instance=user)  # Отправляем письмо с требованием регистрации
         return user
 
     class Meta:

@@ -6,17 +6,17 @@ from .models import AdvUser, SubRubric, SuperRubric
 from .utilities import send_activation_notification
 
 
-def send_activation_notifications(modeladmin, request, queryset):
+def send_activation_notifications(model_admin, request, queryset):
     for req in queryset:
         if not req.is_activated:
             send_activation_notification(req)
-    modeladmin.message_user(request, 'Письма с требованиями отпрвлены')
+    model_admin.message_user(request, 'Письма с требованиями отправлены')
 
 
 send_activation_notifications.short_description = 'Отправка писем с требованиями активации'
 
 
-class NonactivatedFilter(admin.SimpleListFilter):
+class NonActivatedFilter(admin.SimpleListFilter):
     title = 'Прошли активацию?'
     parameter_name = 'activate'
 
@@ -29,7 +29,8 @@ class NonactivatedFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if (val := self.value()) == 'activated':
-            return queryset.filter(is_active=True, is_activated=True)
+            return queryset.filter(is_active=True,
+                                   is_activated=True)
 
         elif val == 'threedays':
             d = datetime.datetime.today() - datetime.timedelta(days=3)
@@ -48,7 +49,7 @@ class NonactivatedFilter(admin.SimpleListFilter):
 class AdvUserAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'is_activated', 'date_joined')
     search_fields = ('username', 'email', 'first_name', 'last_name')
-    list_filter = (NonactivatedFilter,)
+    list_filter = (NonActivatedFilter,)
     fields = (
         ('username', 'email'),
         ('first_name', 'last_name'),
