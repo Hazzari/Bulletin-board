@@ -12,16 +12,18 @@
     <link rel="stylesheet" href="{% static 'main/style.css' %}" type="text/css">
     {% bootstrap_javascript jquery='slim' %}
 </head>
-<body content="container">
+<body class="container">
 <header class="mb-4">
     <h1 class="display-1 text-center">Объявления</h1>
 </header>
-<div class="row">
+<div class="row mx-0">
     <ul class="col nav justify-content-end border">
+
         <li class="nav-item"></li>
         {% if user.is_authenticated %}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true"
                    aria-expanded="false">Профиль</a>
                 <div class="dropdown-menu">
                     <a href="{% url 'main:profile' %}" class="dropdown-item">Мои объявления</a>
@@ -58,9 +60,11 @@
     </section>
 </div>
 <footer class="mt-3 mr-2">
-    <p class="text-right font-italic">&copy; читатели.</p>
+    <p class="text-right font-italic">&copy; Aleksan.</p>
 </footer>
+
 </body>
+
 </html>
 
 

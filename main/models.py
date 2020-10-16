@@ -43,7 +43,6 @@ class SuperRubric(Rubric):
         verbose_name_plural = 'Надрубрики'
 
 
-
 class SubRubricManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(super_rubric__isnull=False)
@@ -76,7 +75,7 @@ class Bb(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликованно')
 
     def delete(self, *args, **kwargs):
-        """Удаление всех связаных картинок, вместе с записью модели"""
+        """Удаление всех связанных картинок, вместе с записью модели"""
         for ai in self.additionalimage_set.all():
             ai.delete()
             super().delete(*args, **kwargs)
