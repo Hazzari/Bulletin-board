@@ -11,5 +11,13 @@ header h1 {
 }
 
 div {
-    border: 1px solid red;
+    /*border: 1px solid red;*/
+}
+
+img.main-image {
+    width: 300px;
+}
+
+img.additional-image {
+    width: 180px;
 }
