@@ -24,6 +24,9 @@ class Rubric(models.Model):
     super_rubric = models.ForeignKey('SuperRubric', on_delete=models.PROTECT,
                                      null=True, blank=True, verbose_name='Надрубрика')
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class SuperRubricManager(models.Manager):
     def get_queryset(self):
@@ -52,7 +55,7 @@ class SubRubric(Rubric):
     objects = SubRubricManager()
 
     def __str__(self):
-        return '%s - %s' % (self.super_rubric.name, self.name)
+        return f'{self.super_rubric.name} - {self.name}'
 
     class Meta:
         proxy = True
@@ -96,6 +99,3 @@ class AdditionalImage(models.Model):
     class Meta:
         verbose_name = "Дополнительная иллюстрация"
         verbose_name_plural = "Дополнительные иллюстрации"
-
-    def __str__(self):
-        pass
