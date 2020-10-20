@@ -21,16 +21,22 @@ from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm
 from .utilities import signer
 
 
-def index(request):
-    return render(request, 'main/index.html')
-
-
 def other_page(request, page):
+    """
+    Вывод всех страниц в которых не нужен контекст.
+    """
     try:
         template = get_template(f'main/{page}.html')
     except TemplateDoesNotExist:
         raise Http404
     return HttpResponse(template.render(request=request))
+
+
+def index(request):
+    # получаем последние 10 рубрик, и отправляем их в шаблон
+    bbs = Bb.objects.filter(is_active=True)[:10]
+    context = {'bbs': bbs}
+    return render(request, 'main/index.html', context=context)
 
 
 class BBLoginView(LoginView):
