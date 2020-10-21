@@ -1,14 +1,33 @@
 {% extends "layout/base.html" %}
 
+{% load thumbnail %}
+{% load static %}
+{% load bootstrap4 %}
+
 {% block title %}
-    Профиль польлзователя
+    Профиль пользователя
 {% endblock %}
 {% block content %}
-    <h2>Профиль польлзователя {{ user.username }}</h2>
+    <h2>Профиль пользователя {{ user.username }}</h2>
     {% if user.first_name and user.last_name %}
-        <p>Здраствуйте, {{ user.first_name }}{{ user.last_name }}!</p>
+        <p>Здравствуйте, {{ user.first_name }}{{ user.last_name }}!</p>
+
+    {% elif user.first_name %}
+        <p>Здравствуйте, {{ user.first_name }}!</p>
     {% else %}
-        <p>Здраствуйте!</p>
+        <p>Здравствуйте!</p>
     {% endif %}
-    <p>Ваши объявления</p>
+    <h5><p>Ваши объявления:</p></h5>
+    {% for bb in bbs %}
+        <li class="media my-1 p-1 border">
+            {% url 'main:detail' rubric_pk=bb.rubric_id pk=bb.pk as url %}
+            <div class="media-body">
+                <h3><a href="{{ url }}{{ all }}">
+                    {{ bb.title }}</a></h3>
+                <div>{{ bb.content }}</div>
+                <p class="text-right font-weight-bold">{{ bb.price }} руб.</p>
+                <p class="text-right font-italic">{{ bb.created_at }} руб.</p>
+            </div>
+        </li>
+    {% endfor %}
 {% endblock %}
