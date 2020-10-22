@@ -81,7 +81,7 @@ class Bb(models.Model):
         """Удаление всех связанных картинок, вместе с записью модели"""
         for ai in self.additionalimage_set.all():
             ai.delete()
-            super().delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
 
     class Meta:
         ordering = ['-created_at']
