@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_cleanup',
     'easy_thumbnails',
+    'captcha',
 
     # Created apps
     'main.apps.MainConfig',
