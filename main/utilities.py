@@ -23,3 +23,15 @@ def send_activation_notification(user):
 
 def get_timestamp_path(instance, filename):
     return f'{datetime.now().timestamp()}{splitext(filename[1])}'
+
+
+def send_new_comment_notification(comment):
+    if ALLOWED_HOSTS:
+        host = f'http://{ALLOWED_HOSTS[0]}'
+    else:
+        host = f'http://localhost:8000'
+    author = comment.bb.author
+    context = {'author': author, 'host': host, 'comment': comment}
+    subject = render_to_string('email/new_comment_letter_subject.txt', context=context)
+    body_text = render_to_string('email/new_comment_letter_body.txt', context=context)
+    author.email_user(subject, body_text)
