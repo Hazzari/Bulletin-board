@@ -151,7 +151,7 @@ def by_rubric(request, pk):
 
 
 def detail(request, rubric_pk, pk):
-    bb = get_object_or_404(Bb, pk=pk)
+    bb = Bb.objects.get(pk=pk)
     ais = bb.additionalimage_set.all()
     comments = Comment.objects.filter(bb=pk, is_active=True)
     initial = {'bb': bb.pk}
