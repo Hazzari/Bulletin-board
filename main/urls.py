@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from .views import index, other_page, profile, by_rubric, detail, profile_bb_detail, profile_bb_add, \
     profile_bb_change, profile_bb_delete
@@ -25,5 +25,7 @@ urlpatterns = [
     path('<int:rubric_pk>/<int:pk>/', detail, name='detail'),
     path('<int:pk>/', by_rubric, name='by_rubric'),
     path('<str:page>/', other_page, name='other'),
+    path('api/', include('api.urls')),
+
     path('', index, name='index'),
 ]

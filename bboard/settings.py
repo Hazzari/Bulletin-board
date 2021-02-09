@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django_cleanup',
     'easy_thumbnails',
     'captcha',
+    'rest_framework',
+    'corsheaders',
 
     # Created apps
     'main.apps.MainConfig',
@@ -66,9 +68,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CORS_ORIGINAL_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
 
 ROOT_URLCONF = 'bboard.urls'
 
@@ -113,3 +112,6 @@ MEDIA_URL = '/media/'
 
 THUMBNAIL_ALIASES = {'': {'default': {'size': (96, 96), 'crop': 'scale'}, }, }
 THUMBNAIL_BASEDIR = 'thumbnails'
+
+CORS_ORIGINAL_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'
